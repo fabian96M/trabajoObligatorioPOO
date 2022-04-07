@@ -64,7 +64,7 @@ function evaluarRespuesta(){
         //se solicitara el numero dentro del bucle hasta que ingrese un numero valido
     $numero = trim(fgets(STDIN));
     //se evalua que el numero sea distinto a 0, 1, 2 o 3
-    if($numero<0 || $numero > 3){
+    if($numero < 0 || $numero > 3){
     echo("por favor escriba un numero valido \n ");
     } 
     else{
@@ -81,6 +81,7 @@ function evaluarRespuesta(){
      * @return array
      */
     function cargaViaje($colViajes){
+        $arregloPasajeros = [];
         $cantViajes = 0;
         $cantPasajeros = 0;
         $codViaje = "";
@@ -105,10 +106,11 @@ function evaluarRespuesta(){
             $apellidoPas= trim(fgets(STDIN));
             echo("por favor ingrese el documento del pasajero numero ".$j+1 ." \n");
             $documentoPas= trim(fgets(STDIN));
-            $arregloPasajeros = cargarDatosPasajero($nombrePas, $apellidoPas, $documentoPas);
+            //en cada ciclo se adiciona una coleccion asociativa en la posicion de iteracion
+            $arregloPasajeros[$j] = cargarDatosPasajero($nombrePas, $apellidoPas, $documentoPas);
         }
         //detecta la posicion libre de la coleccion de viajes usando count y crea un nuevo objeto viaje para asignarlo a dicha posicion
-        $viajeNuevo = new Viajes($codViaje, $destino, $maxPas, $cantPasajeros,$arregloPasajeros);
+        $viajeNuevo = new Viajes($codViaje, $destino, $maxPas, $cantPasajeros, $arregloPasajeros);
         $posicionLibre = count($colViajes);
         $colViajes[$posicionLibre] = $viajeNuevo;
         
@@ -161,7 +163,7 @@ function evaluarRespuesta(){
     $apellidoPasajero = trim(fgets(STDIN));
     ("ingrese el documento del pasajero".$numPasajero ."\n");
     $documentoPasajero = trim(fgets(STDIN));
-    $pasajeroNuevo = cargarDatosPasajero($nombrePasajero, $apellidoPasajero,$documentoPasajero);
+    $pasajeroNuevo = cargarDatosPasajero($nombrePasajero, $apellidoPasajero, $documentoPasajero);
     $viaje->setPasajero($pasajeroNuevo, $numPasajero-1);
     }
 }
