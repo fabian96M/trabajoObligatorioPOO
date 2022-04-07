@@ -1,9 +1,8 @@
 <?php
 require_once("ClaseViajes.php");
 /**
- * 
+ * definimos variables para preinstanciar un viaje
  */
-//definimos variables para preinstanciar un viaje
 $viajes = [];
 $eleccion = -1;
 $codigoViaje = " abc123";
@@ -24,7 +23,7 @@ menuOpciones();
 $eleccion = evaluarRespuesta();
 if($eleccion == 1){
 //cargar un nuevo viaje
-cargaViaje($viajes);
+$viajes = cargaViaje($viajes);
 }
 elseif($eleccion == 2){
 //modificar un viaje
@@ -109,10 +108,14 @@ function evaluarRespuesta(){
             $arregloPasajeros = cargarDatosPasajero($nombrePas, $apellidoPas, $documentoPas);
         }
         //detecta la posicion libre de la coleccion de viajes usando count y crea un nuevo objeto viaje para asignarlo a dicha posicion
-        $colViajes[count($colViajes)] = new Viajes($codViaje, $destino, $maxPas, $cantPasajeros,$arregloPasajeros);
+        $viajeNuevo = new Viajes($codViaje, $destino, $maxPas, $cantPasajeros,$arregloPasajeros);
+        $posicionLibre = count($colViajes);
+        $colViajes[$posicionLibre] = $viajeNuevo;
+        
     }
+    return $colViajes;
     ////////////////////////////////////////////////////////////////////////////
-    //}
+    }
     /**
      * esta funcion recibe por parametro un objeto viaje para modificar sus atributos
      * @param $viaje
@@ -162,7 +165,7 @@ function evaluarRespuesta(){
     $viaje->setPasajero($pasajeroNuevo, $numPasajero-1);
     }
 }
-    }
+    
 ////////////////////////////////////////////////////////////////////////////
 /** Esta función permite cargar los datos de un pasajero en un arreglo asociativo, retorna un arreglo cargado
  * @param String $nombre
@@ -171,6 +174,7 @@ function evaluarRespuesta(){
  * @return array $pasajero
  */
 function cargarDatosPasajero($nombre, $apellido, $dni ){
+    $pasajero = [];
     $pasajero = ["nombre"=>$nombre,"apellido"=>$apellido,"documento"=>$dni ];
     return $pasajero;
 }
@@ -183,6 +187,7 @@ function verViaje($arregloViajes){
     //inspeccionamos el arreglo de viajes dentro de un bucle repetitivo
     for($i=0;$i<count($arregloViajes);$i++){
         //numero viaje
+        echo("viajes cargados = ".count($arregloViajes)."\n");
         echo("// VIAJE Nro :".$i+1 ."\n");
         echo $arregloViajes[$i];
         
