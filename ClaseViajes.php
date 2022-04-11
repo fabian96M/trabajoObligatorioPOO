@@ -64,12 +64,15 @@ function __toString()
  * @return string
 */
 function mostrarPasajeros(){
+    $datosPasajeros = " ";
     $tamaño = count($this->pasajeros);
     for($i=0;$i<$tamaño;$i++){
-        echo ("PASAJERO NUMERO ". $i+1 ." \n
+        $datosPasajeros = ($datosPasajeros." \n 
+               PASAJERO NUMERO ". $i+1 ." \n
                nombre: " .$this->pasajeros[$i]["nombre"] ."\n
                apellido: " .$this->pasajeros[$i]["apellido"] ."\n
                documento: " .$this->pasajeros[$i]["documento"] ."\n ");
     }
+    return $datosPasajeros;
 }
  }

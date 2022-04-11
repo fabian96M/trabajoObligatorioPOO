@@ -9,9 +9,9 @@ $codigoViaje = " abc123";
 $destinoViaje = " Chos Malal";
 $maximoPasajeros= 20;
 $cantidadPasajeros= 4;
-$pasajeros[0]=["nombre"=>"Ricardo", "apellido"=>"Gonzalez","documento"=>39803874];
-$pasajeros[1]=["nombre"=>"Ricardo", "apellido"=>"peralta","documento"=>39867455];
-$pasajeros[2]=["nombre"=>"Ricardo", "apellido"=>"quipildor","documento"=>39829476];
+$pasajeros[0]=["nombre"=>"Andres", "apellido"=>"Gonzalez","documento"=>39803874];
+$pasajeros[1]=["nombre"=>"Jose", "apellido"=>"peralta","documento"=>39867455];
+$pasajeros[2]=["nombre"=>"Evangelina", "apellido"=>"quipildor","documento"=>39829476];
 $pasajeros[3]=["nombre"=>"Ricardo", "apellido"=>"Rios","documento"=>39897469];
 //asignamos las variables por parametro para crear el objeto viaje1
 $viaje1 = new Viajes($codigoViaje,$destinoViaje,$maximoPasajeros, $cantidadPasajeros, $pasajeros);
@@ -198,7 +198,7 @@ function verViaje($arregloViajes){
     for($i=0;$i<count($arregloViajes);$i++){
         //numero viaje
         echo("viajes cargados = ".count($arregloViajes)."\n");
-        echo("// VIAJE Nro :".$i+1 ."\n");
+        echo("// VIAJE Nro: ".$i+1 ."\n");
         echo $arregloViajes[$i];
         
     }
