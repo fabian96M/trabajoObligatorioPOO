@@ -56,7 +56,6 @@ echo(" \n
 ////////////////////////////////////////////////////////////////////////////
 /**
  * recibe un numero y verifica que sea 1,2 o 3 para devolver dicho numero
- * @param int $numElecto
  * @return int
  */
 function evaluarRespuesta(){
@@ -178,8 +177,7 @@ function evaluarRespuesta(){
     
 ////////////////////////////////////////////////////////////////////////////
 /** Esta función permite cargar los datos de un pasajero en un arreglo asociativo, retorna un arreglo cargado
- * @param string $nombre
- * @param string $apellido
+ * @param string $nombre, apellido
  * @param int $dni
  * @return array $pasajero
  */
@@ -197,9 +195,9 @@ function verViaje($arregloViajes){
     //inspeccionamos el arreglo de viajes dentro de un bucle repetitivo
     for($i=0;$i<count($arregloViajes);$i++){
         //numero viaje
-        echo("viajes cargados = ".count($arregloViajes)."\n");
-        echo("// VIAJE Nro: ".$i+1 ."\n");
-        echo $arregloViajes[$i];
+        echo("viajes cargados = ".count($arregloViajes)."\n
+        // VIAJE Nro: ".$i+1 ."\n
+         ".$arregloViajes[$i]);
         
     }
 
