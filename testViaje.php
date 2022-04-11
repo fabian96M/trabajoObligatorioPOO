@@ -29,7 +29,7 @@ elseif($eleccion == 2){
 //modificar un viaje
 echo("indique el numero de viaje que desea modificar \n");
 $posicionCarga = trim(fgets(STDIN));
-modificaViaje($viajes[$posicionCarga-1]);
+$viajes[$posicionCarga-1] = modificaViaje($viajes[$posicionCarga-1]);
 }
 elseif($eleccion == 3){
 //visualizar los datos de los viajes cargados
@@ -120,52 +120,58 @@ function evaluarRespuesta(){
     }
     /**
      * esta funcion recibe por parametro un objeto viaje para modificar sus atributos
-     * @param $viaje
+     * @param object $viaje
+     * @return object
      */
     function modificaViaje($viaje){
-        $numeroEleccion = 0;
-    while($numeroEleccion<1 || $numeroEleccion> 5){
+        //$numeroEleccion = 0;
+        //mientras el numero no sea el solicitado se vuelve a pedir 
+    do{
         echo(" ingrese numero del atributo que quiera modificar \n
     1) para modificar el codigo de viaje \n
     2) para modificar el destino de viaje \n
     3) para modificar el maximo de pasajeros \n
     4) para modificar la cantidad de pasajeros \n 
     5) para modificar los datos de un pasajero \n");
-    $numeroEleccion = trim(fgetc(STDIN));    
-    }
+    $numeroEleccion = trim(fgets(STDIN));    
+    }while($numeroEleccion<1 || $numeroEleccion>5 );
+    //una vez pasado el bucle de verificacion
     if($numeroEleccion == 1){
-     //para modificar el codigo de viaje 
+     //secuencia para modificar el codigo de viaje 
      echo("ingrese un nuevo codigo de viaje \n");
-     $viaje-> setCodigoViaje(trim(fgets(STDIN)));
+     $nuevoCodigo = trim(fgets(STDIN));
+     $viaje-> setCodigoViaje($nuevoCodigo);
     }
     elseif($numeroEleccion == 2){
-    //para modificar el destino
+    //secuencia para modificar el destino
     echo("ingrese un nuevo destino \n");
     $viaje->setDestino(trim(fgets(STDIN))); 
     }
     elseif($numeroEleccion == 3){
-    //para modificar el maximo de pasajeros
+    //secuencia para modificar el maximo de pasajeros
     echo("ingrese la nueva cantidad maxima de pasajeros \n");
     $viaje->setMaximoPasajeros(trim(fgets(STDIN))); 
     }
     elseif($numeroEleccion == 4){
-    //para modificar el numero de pasajeros
+    //secuencia para modificar el numero de pasajeros
     echo("ingrese la nueva cantidad de pasajeros \n");
     $viaje->setCantPasajeros(trim(fgets(STDIN)));
     }
     elseif($numeroEleccion == 5){
-    //para modificar los datos de un pasajero
+    //secuencia para modificar los datos de un pasajero
     echo("ingrese el numero del pasajero a modificar \n");
     $numPasajero = trim(fgets(STDIN));
-    ("ingrese el nombre del pasajero".$numPasajero ."\n");
+    echo("ingrese el nombre del pasajero".$numPasajero ."\n");
     $nombrePasajero = trim(fgets(STDIN));
-    ("ingrese el apellido del pasajero".$numPasajero ."\n");
+    echo("ingrese el apellido del pasajero".$numPasajero ."\n");
     $apellidoPasajero = trim(fgets(STDIN));
-    ("ingrese el documento del pasajero".$numPasajero ."\n");
+    echo("ingrese el documento del pasajero".$numPasajero ."\n");
     $documentoPasajero = trim(fgets(STDIN));
     $pasajeroNuevo = cargarDatosPasajero($nombrePasajero, $apellidoPasajero, $documentoPasajero);
     $viaje->setPasajero($pasajeroNuevo, $numPasajero-1);
     }
+    //finalizado el recorrido de modificacion se retorna el objeto modificado
+    return $viaje;
 }
     
 ////////////////////////////////////////////////////////////////////////////

@@ -55,6 +55,11 @@ function setPasajeros($pasaj){
 function setPasajero($pasajer, $posicion){
     $this->pasajeros[$posicion] = $pasajer ;
 }
+
+function __toString()
+{
+    return("codigo viaje".$this->getCodigoViaje()."\n destino ".$this->getDestino()."\n maximo Pasajeros".$this-> getMaximoPasajeros()."\n cantidad pasajeros ".$this->getCantPasajeros()."\n pasajeros ".$this->mostrarPasajeros()."\n");
+}
 /**  realiza un recorrido exahustivo de un arreglo de pasajeros y escribe los datos correspondientes a cada posicion 
  * @return string
 */
@@ -66,9 +71,5 @@ function mostrarPasajeros(){
                apellido: " .$this->pasajeros[$i]["apellido"] ."\n
                documento: " .$this->pasajeros[$i]["documento"] ."\n ");
     }
-}
-function __toString()
-{
-    return("codigo viaje".$this->getCodigoViaje()."\n destino ".$this->getDestino()."\n maximo Pasajeros".$this-> getMaximoPasajeros()."\n cantidad pasajeros ".$this->getCantPasajeros()."\n pasajeros ".$this->mostrarPasajeros()."\n");
 }
  }
