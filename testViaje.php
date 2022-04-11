@@ -29,6 +29,7 @@ elseif($eleccion == 2){
 //modificar un viaje
 echo("indique el numero de viaje que desea modificar \n");
 $posicionCarga = trim(fgets(STDIN));
+//el objeto de la coleccion se envia por parametro a la funcion modifica viaje y se retorna el obj modificado con los datos que ingresa el usuario
 $viajes[$posicionCarga-1] = modificaViaje($viajes[$posicionCarga-1]);
 }
 elseif($eleccion == 3){
@@ -43,7 +44,8 @@ verViaje($viajes);
  * este menu de opciones presenta tres opciones al usuario por pantalla
  */
 function menuOpciones(){
-echo(" a continuacion por favor ingrese el numero de acuerdo a su eleccion \n
+echo(" \n
+ A continuacion por favor ingrese el numero de acuerdo a su eleccion \n
 1) Para cargar informacion de un viaje \n
 2) Para modificar un viaje \n
 3) Para ver los datos de los viajes cargados \n
@@ -176,8 +178,8 @@ function evaluarRespuesta(){
     
 ////////////////////////////////////////////////////////////////////////////
 /** Esta función permite cargar los datos de un pasajero en un arreglo asociativo, retorna un arreglo cargado
- * @param String $nombre
- * @param String $apellido
+ * @param string $nombre
+ * @param string $apellido
  * @param int $dni
  * @return array $pasajero
  */
